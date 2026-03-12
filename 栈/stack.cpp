@@ -4,7 +4,7 @@ using namespace std;
 typedef int elementType;
 const int maxlen=100;
 
-enum stack_error_code{success,underflow,overflow };
+enum stack_error_code{success,underflow,overflow};
 
 class Stack {
 public:
