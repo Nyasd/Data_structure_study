@@ -5,7 +5,7 @@ typedef int elementType;
 
 struct Node {
     elementType data;
-    Node *next;
+    Node *next; 
 };
 
 class Stack {
@@ -36,7 +36,7 @@ bool Stack::isEmpty() const {
 
 elementType Stack::topElement() const {
     if (isEmpty()) {
-        throw runtime_error("underflow");
+        throw runtime_error("Stack is empty");
     }
     return top->data;
 }
@@ -50,7 +50,7 @@ void Stack::push(elementType value) {
 
 void Stack::pop() {
     if (isEmpty()) {
-        throw runtime_error("Stack is empty");
+        throw runtime_error("underflow");
     }
     Node *temp=top;
     top=top->next;
