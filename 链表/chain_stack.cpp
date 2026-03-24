@@ -16,6 +16,7 @@ public:
     ~Stack();
     bool isEmpty()const;
     elementType topElement()const;
+    void bottomPush(elementType value);
     void push(elementType value);
     void pop();
 };
@@ -41,6 +42,23 @@ elementType Stack::topElement() const {
     return top->data;
 }
 
+void Stack::bottomPush(elementType value)
+{
+    Node *newNode=new Node;
+    newNode->data=value;
+    newNode->next=nullptr;
+    
+    if (isEmpty()) {
+        top=newNode;
+    } else {
+        Node *current=top;
+        while (current->next!=nullptr) {
+            current=current->next;
+        }
+        current->next=newNode;
+    }
+}
+
 void Stack::push(elementType value) {
     Node *s=new Node;
     s->data=value;
@@ -59,6 +77,15 @@ void Stack::pop() {
 
 int main()
 {
-    cout<<"asdfghjkl"<<endl;
+    Stack s;
+    s.push(10);
+    s.push(20);
+    s.bottomPush(5);
+    cout << "Top element: " << s.topElement() << endl; // Should print 20
+    s.pop();
+    cout << "Top element：" << s.topElement() << endl; // Should print 10
+    s.pop();
+    cout << "Top element: " << s.topElement() << endl; // Should print 5
+    
     return 0;
 }
